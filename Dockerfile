@@ -25,5 +25,4 @@ RUN chown -R www-data:www-data /var/www/html && \
 # Habilite o módulo rewrite do Apache
 RUN a2enmod rewrite
 
-# Exponha a porta que o Apache está escutando
 EXPOSE 80
