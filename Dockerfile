@@ -25,4 +25,6 @@ RUN chown -R www-data:www-data /var/www/html && \
 # Habilite o módulo rewrite do Apache
 RUN a2enmod rewrite
 
+RUN echo 'LogLevel debug' >> /etc/apache2/apache2.conf
+
 EXPOSE 80
