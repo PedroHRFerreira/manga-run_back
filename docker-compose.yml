@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8000:80'
+    volumes:
+      - .:/var/www/html
+    networks:
+      - laravel
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: ballast.proxy.rlwy.net
+      DB_PORT: 17121
+      DB_DATABASE: railway
+      DB_USERNAME: root
+      DB_PASSWORD: WhhSxFDbEHiXtmjihobVCRSjmaYYnNLH
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: ballast.proxy.rlwy.net
+      PMA_PORT: 17121
+      PMA_USER: root
+      PMA_PASSWORD: WhhSxFDbEHiXtmjihobVCRSjmaYYnNLH
+    ports:
+      - '8080:80'
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
